@@ -1,8 +1,5 @@
 <?php
-
-
 namespace Giraffe;
-
 
 class Giraffe
 {
