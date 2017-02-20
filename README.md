@@ -1,12 +1,20 @@
 # Giraffe
-(Javascript and PHP) Ajax: Server/Client Helper/Router
+**Ajax: Server/Client Helper/Router**
+supports:
+* DataTables
+* Ajax Uploads
+* Redirects
+* Notifications
+* Modals
+* General all purpose Ajax
+* Debugging
 
 ## Install: Server Side Usage
 
 **index.php / bootstrap.php**
 
 
-_Add this to one or both of these php files_
+Add this to one or both of these php files:
 
 
 ```
@@ -17,9 +25,9 @@ Giraffe::setDeveloperEmails(
      'me@mailprovider.co.uk,my_partner@theirmailprovider.co.uk'
 );
 ```
-**Put a route in place to get to an ajax controller**
+###Put a route in place to get to an ajax controller
 
-_Here is an example of how that ajax controller may look_
+Here is an example of how that ajax controller may look:
 
 ```
 namespace MyApp\Ajax;
