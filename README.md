@@ -10,7 +10,7 @@ supports:
 * General all purpose Ajax
 * Debugging
 
-## Install: Server Side Usage
+## Install: Server Side
 
 **index.php / bootstrap.php**
 
@@ -43,6 +43,15 @@ class Ajax
         new Giraffe($allowedControllers, 'MyApp\\Controller\\', 'ajax', MYAPP_PATH . '/Views/ajax/');
     }
 }
+```
+
+## Install: Client/Front End Side
+
+Add giraffe.js to your public javascript folder.
+Giraffe is designed to be used in conjunction with JQuery.
+
+
+
 
 
 
