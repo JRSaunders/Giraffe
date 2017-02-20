@@ -22,16 +22,15 @@ Giraffe::setDeveloperEmails(
 _Here is an example of how that ajax controller may look_
 
 ```
-namespace MyApp\Controller;
+namespace MyApp\Ajax;
 
-use MyApp\Controller\Core\BaseController;
 use Giraffe\Giraffe;
 
-class Ajax extends BaseController
+class Ajax 
 {
-    public function processGiraffeAjax()
+    public function someMethodYouRouteToForAjax()
     {
-        $allowedControllers = [Login::class, Dashboard::class, Users::class, Retailer::class, Offer::class];
+        $allowedControllers = [Login::class, Dashboard::class];
         new Giraffe($allowedControllers, 'MyApp\\Controller\\', 'ajax', MYAPP_PATH . '/Views/ajax/');
     }
 }
