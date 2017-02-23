@@ -1,6 +1,9 @@
 <?php
 namespace Giraffe;
-
+/**
+ * Class Giraffe
+ * @package Giraffe
+ */
 class Giraffe
 {
 
@@ -136,6 +139,9 @@ class Giraffe
         die;
     }
 
+    /**
+     * @return string
+     */
     public static function getJSFilename()
     {
         return 'giraffe.' . static::$jsVersion . '.js';
@@ -786,7 +792,7 @@ class Giraffe
      */
     public static function getJSDIR()
     {
-        if (!isset(static::$JS_DIR)) {
+        if ((!isset(static::$JS_DIR)) || static::$JS_DIR === null) {
             return false;
         }
         return rtrim(static::$JS_DIR, '/');
