@@ -156,10 +156,8 @@ class Giraffe
             $giraffeWritePath = static::getJSDIR() . '/' . static::getJSFilename();
             if (!file_exists($giraffeWritePath)) {
                 $giraffeJSData = file_get_contents($giraffeJSpath);
-                $put = file_put_contents($giraffeWritePath, $giraffeJSData);
-                if (!$put) {
-                    throw new \Exception('Make Directory - ' . static::getJSDIR() . ' writable!');
-                }
+                file_put_contents($giraffeWritePath, $giraffeJSData);
+
             }
         }
     }
