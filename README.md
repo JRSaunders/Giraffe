@@ -25,6 +25,8 @@ Giraffe::setProject('MY SITE NAME OR PRJECT NAME');
 Giraffe::setDeveloperEmails(
      'me@mailprovider.co.uk,my_partner@theirmailprovider.co.uk'
 );
+Giraffe::setJSDIR(__DIR__ . '/public/assets/js/giraffe/');
+
 ```
 ###Put a route in place to get to an ajax controller
 
