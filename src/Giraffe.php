@@ -76,6 +76,11 @@ class Giraffe
     public static $ENVIRONMENT = 'production';
 
     /**
+     * @var null|string
+     */
+    public static $JS_DIR = null;
+
+    /**
      * Giraffe constructor.
      * @param array $allowedControllers
      * @param string|null $controllerPrefix
@@ -84,6 +89,8 @@ class Giraffe
      */
     public function __construct($allowedControllers = [], $controllerPrefix = null, $methodPrefix = null, $viewPrefix = null)
     {
+
+        static::initUpJS();
         if (static::$RUNNING_HANDLER == true) {
             // Don't allow Giraffe to run more than once.
             throw new \Exception('Giraffe is already handling a request.');
@@ -129,6 +136,14 @@ class Giraffe
         die;
     }
 
+    public static function initUpJS()
+    {
+        if (static::getJSDIR()) {
+            $giraffeJSpath = __DIR__ . '/../js/giraffe.js';
+            $giraffeJSData = file_get_contents($giraffeJSpath);
+            file_put_contents(static::getJSDIR() . '/giraffe.js', $giraffeJSData);
+        }
+    }
 
     private static function callControllerMethod($allowedControllers)
     {
@@ -750,6 +765,25 @@ class Giraffe
     public static function setEnvironment(string $ENVIRONMENT)
     {
         self::$ENVIRONMENT = $ENVIRONMENT;
+    }
+
+    /**
+     * @return null
+     */
+    public static function getJSDIR()
+    {
+        if (!isset(static::$JS_DIR)) {
+            return false;
+        }
+        return rtrim(static::$JS_DIR, '/');
+    }
+
+    /**
+     * @param null $JS_DIR
+     */
+    public static function setJSDIR($JS_DIR)
+    {
+        static::$JS_DIR = $JS_DIR;
     }
 
 
