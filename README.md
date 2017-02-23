@@ -48,7 +48,7 @@ class Ajax
 ```
 
 ## Install: Client/Front End Side
-Create this folder `chown apache:apache giraffe` or `chmod 666 giraffe`.
+Create a folder named giraffe in your js directory.  Then `chown apache:apache giraffe` or `chmod 666 giraffe`.
 
 Giraffe can update your Javascript File when composer updates the package.
 
