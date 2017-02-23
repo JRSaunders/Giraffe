@@ -4,11 +4,13 @@
  * @constructor
  */
 function Giraffe(initOptions, noInit) {
+
     noInit = noInit || false;
     this.initOptions(initOptions);
     this.$_GET = this.getQueryParams(document.location.search);
-    this.initAjaxQueue();
+
     if (noInit == false) {
+        this.initAjaxQueue();
         this.initExecute();
     }
     this.environment = this.getCookie('GiraffeEnvironment') || 'production';
@@ -816,6 +818,7 @@ Giraffe.prototype.addressBarStateHandler = function (callback) {
         }
     });
 }
+
 
 /**THIS HAS TO BE LAST DECLARED FUNCTION**/
 Giraffe.prototype.log = function () {

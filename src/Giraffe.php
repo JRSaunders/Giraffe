@@ -4,6 +4,7 @@ namespace Giraffe;
 class Giraffe
 {
 
+    public static $jsVersion = 1;
     /**
      * @var bool
      */
@@ -89,7 +90,6 @@ class Giraffe
      */
     public function __construct($allowedControllers = [], $controllerPrefix = null, $methodPrefix = null, $viewPrefix = null)
     {
-
         static::initUpJS();
         if (static::$RUNNING_HANDLER == true) {
             // Don't allow Giraffe to run more than once.
@@ -136,14 +136,25 @@ class Giraffe
         die;
     }
 
+    public static function getJSFilename()
+    {
+        return 'giraffe.' . static::$jsVersion . '.js';
+    }
+
     public static function initUpJS()
     {
-        $giraffeJSpath = __DIR__ . '/../js/giraffe.js';
+        $giraffeJSpath = __DIR__ . '/../js/' . static::getJSFilename();
+        $srcExists = file_exists($giraffeJSpath);
 
-        if (static::getJSDIR()) {
-            $giraffeJSData = file_get_contents($giraffeJSpath);
-            $giraffePath = static::getJSDIR() . '/giraffe.js';
-            file_put_contents($giraffePath, $giraffeJSData);
+        if (static::getJSDIR() && $srcExists) {
+            $giraffeWritePath = static::getJSDIR() . '/' . static::getJSFilename();
+            if (!file_exists($giraffeWritePath)) {
+                $giraffeJSData = file_get_contents($giraffeJSpath);
+                $put = file_put_contents($giraffeWritePath, $giraffeJSData);
+                if (!$put) {
+                    throw new \Exception('Make Directory - ' . static::getJSDIR() . ' writable!');
+                }
+            }
         }
     }
 
@@ -792,6 +803,6 @@ class Giraffe
         }
 
     }
-    
+
 
 }
