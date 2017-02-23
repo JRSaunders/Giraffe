@@ -799,12 +799,12 @@ class Giraffe
     }
 
     /**
-     * @param null $JS_DIR
+     * @param $JS_DIR
      */
     public static function setJSDIR($JS_DIR)
     {
         static::$JS_DIR = $JS_DIR;
-        if (!file_exists(static::getJSDIR() . '/giraffe.js')) {
+        if (!file_exists(static::getJSDIR() . '/' . static::getJSFilename())) {
             static::initUpJS();
         }
 
