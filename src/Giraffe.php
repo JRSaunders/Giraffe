@@ -7,7 +7,7 @@ namespace Giraffe;
 class Giraffe
 {
 
-    public static $jsVersion = 1;
+    public static $jsVersion = '1.1';
     /**
      * @var bool
      */
