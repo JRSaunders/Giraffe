@@ -48,8 +48,10 @@ class Ajax
 ```
 
 ## Install: Client/Front End Side
+Create this folder `chown apache:apache giraffe` or `chmod 666 giraffe`.
 
-Add giraffe.js to your public javascript folder.
+Giraffe can update your Javascript File when composer updates the package.
+
 Giraffe is designed to be used in conjunction with JQuery.
 
 
