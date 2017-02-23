@@ -792,10 +792,6 @@ class Giraffe
         }
 
     }
-
-    public static function getSrc()
-    {
-        return static::getJSDIR() . '/giraffe,js';
-    }
+    
 
 }
