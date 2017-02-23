@@ -138,10 +138,12 @@ class Giraffe
 
     public static function initUpJS()
     {
+        $giraffeJSpath = __DIR__ . '/../js/giraffe.js';
+
         if (static::getJSDIR()) {
-            $giraffeJSpath = __DIR__ . '/../js/giraffe.js';
             $giraffeJSData = file_get_contents($giraffeJSpath);
-            file_put_contents(static::getJSDIR() . '/giraffe.js', $giraffeJSData);
+            $giraffePath = static::getJSDIR() . '/giraffe.js';
+            file_put_contents($giraffePath, $giraffeJSData);
         }
     }
 
@@ -757,6 +759,7 @@ class Giraffe
     public static function setProject(string $PROJECT)
     {
         self::$PROJECT = $PROJECT;
+
     }
 
     /**
@@ -784,7 +787,15 @@ class Giraffe
     public static function setJSDIR($JS_DIR)
     {
         static::$JS_DIR = $JS_DIR;
+        if (!file_exists(static::getJSDIR() . '/giraffe.js')) {
+            static::initUpJS();
+        }
+
     }
 
+    public static function getSrc()
+    {
+        return static::getJSDIR() . '/giraffe,js';
+    }
 
 }
