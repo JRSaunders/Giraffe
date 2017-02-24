@@ -255,6 +255,7 @@ class Giraffe
      */
     protected static function getJsonData()
     {
+        include_once(__DIR__ . '/../helper/helper.php');
         $jsonText = file_get_contents('php://input');
         $data = json_decode($jsonText);
         $headers = getallheaders();
