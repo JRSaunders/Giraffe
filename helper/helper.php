@@ -1,4 +1,6 @@
 <?php
+namespace Giraffe;
+
 if (!function_exists('getallheaders')) {
     function getallheaders()
     {
