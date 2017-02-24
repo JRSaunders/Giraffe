@@ -10,8 +10,6 @@ supports:
 * General all purpose Ajax
 * Debugging
 
---
-
 ## Install: Server Side
 
 **index.php / bootstrap.php**
