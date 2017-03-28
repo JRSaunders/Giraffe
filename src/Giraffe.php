@@ -809,5 +809,35 @@ class Giraffe
 
     }
 
+    /**
+     * @param $array
+     * @return mixed
+     * @throws \Exception
+     */
+    public static function declareArray (& $array) {
+
+
+        $args = func_get_args();
+        if (count($args) === 1) {
+            return $args[0];
+        }
+        array_shift($args); // Strip the array out of the arguments
+        $targetArray =& $array;
+        if (is_array($args) && count($args) > 0) {
+            foreach ($args as $arg) {
+                if (! (is_string($arg) || is_numeric($arg))) {
+                    throw new \Exception('All arguments passed to declare_array() must be a string or be numeric.. apart for the first argument which must be an array.');
+                }
+                if (! array_key_exists($arg, $targetArray)) {
+                    $targetArray[$arg] = array();
+                }
+                if (! is_array($targetArray[$arg])) {
+                    throw new \Exception('All existing/created elements used in declare_array() should be of type array.');
+                }
+                $targetArray =& $targetArray[$arg];
+            }
+        }
+    }
+
 
 }
